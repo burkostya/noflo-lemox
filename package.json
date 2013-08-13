@@ -1,0 +1,43 @@
+{
+  "name": "noflo-lemox",
+  "description": "NoFlo components for stream parsing xml",
+  "version": "0.0.0",
+  "keywords": [
+    "xml",
+    "noflo",
+    "stream"
+  ],
+  "author": {
+    "name": "Konstantin Burykin",
+    "email": "burkostya@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/burkostya/noflo-lemox.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "git://github.com/burkostya/noflo-lemox/blob/master/LICENSE-MIT"
+    }
+  ],
+  "scripts": {
+    "test": "mocha"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "noflo": "~0.3.3",
+    "lemox": "0.0.2"
+  },
+  "devDependencies": {
+    "chai": "~1.7.0",
+    "mocha": "~1.12.0"
+  },
+  "noflo": {
+    "components": {
+      "Select": "./components/Select.coffee"
+    }
+  }
+}
