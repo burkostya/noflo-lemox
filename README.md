@@ -9,12 +9,12 @@ NoFlo components for xml.
 
 Parse xml into objects by selector.
 
-In ports:
+#### In ports:
 
 - NODE: name of nodes that will be thrown to OUT port
 - IN: chunks of xml
 
-Out ports:
+#### Out ports:
 
 - OUT: object with next fields: name, attributes, text, isSelfClosing
 - ERROR: error
