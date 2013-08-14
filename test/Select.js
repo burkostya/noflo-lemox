@@ -47,4 +47,23 @@ describe('Select component', function() {
     ins.send(xml2);
     ins.disconnect();
   });
+  it('should emit error dor bad xml', function(done) {
+    var xml = [
+      '<root>',
+        '<el id="first"></el>',
+        '<el>text',
+      '</root>'
+    ].join('');
+    var error;
+    err.on('data', function (err) {
+      error = err;
+    });
+    out.on('disconnect', function () {
+      expect(error).to.exist;
+      done();
+    });
+    el.send('el');
+    ins.send(xml);
+    ins.disconnect();
+  });
 });
