@@ -1,7 +1,7 @@
 {
   "name": "noflo-lemox",
   "description": "NoFlo components for stream parsing xml",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "keywords": [
     "xml",
     "noflo",
