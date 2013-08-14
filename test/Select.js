@@ -4,15 +4,15 @@ var expect = require('chai').expect;
 var Select = require('../components/Select.js');
 
 describe('Select component', function() {
-  var c, ins, el, out, err;
+  var c, ins, node, out, err;
   beforeEach(function() {
-    c   = Select.getComponent();
-    ins = socket.createSocket();
-    el  = socket.createSocket();
-    out = socket.createSocket();
-    err = socket.createSocket();
+    c    = Select.getComponent();
+    ins  = socket.createSocket();
+    node = socket.createSocket();
+    out  = socket.createSocket();
+    err  = socket.createSocket();
     c.inPorts.in.attach(ins);
-    c.inPorts.element.attach(el);
+    c.inPorts.node.attach(node);
     c.outPorts.out.attach(out);
     c.outPorts.error.attach(err);
   });
@@ -42,7 +42,7 @@ describe('Select component', function() {
       expect(elements[2].isSelfClosing).to.be.true;
       done();
     });
-    el.send('el');
+    node.send('el');
     ins.send(xml1);
     ins.send(xml2);
     ins.disconnect();
@@ -62,7 +62,7 @@ describe('Select component', function() {
       expect(error).to.exist;
       done();
     });
-    el.send('el');
+    node.send('el');
     ins.send(xml);
     ins.disconnect();
   });

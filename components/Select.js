@@ -10,8 +10,8 @@ var Select = function() {
   var self = this;
   Component.call(Select);
   self.inPorts = {
-    "in":    new Port(),
-    element: new Port()
+    "in": new Port(),
+    node: new Port()
   };
   self.outPorts = {
     out:   new Port(),
@@ -25,7 +25,7 @@ var Select = function() {
   self.inPorts.in.on('disconnect', function () {
     parser.end();
   });
-  self.inPorts.element.on('data', function (data) {
+  self.inPorts.node.on('data', function (data) {
     parser = new Lemox({ selector: data });
     parser.on('readable', function () {
       self.outPorts.out.send(parser.read());
