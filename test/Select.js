@@ -19,7 +19,7 @@ describe('Select component', function() {
   it('should parse xml', function(done) {
     var xml1 = [
       '<root>',
-        '<el id=first></el>',
+        '<el id="first"></el>',
         '<el>text'
     ].join('');
     var xml2 = [
