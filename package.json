@@ -28,7 +28,7 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "noflo": "~0.3.3",
+    "noflo": "~0.4.0",
     "lemox": "~0.0.2"
   },
   "devDependencies": {
