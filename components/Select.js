@@ -8,7 +8,7 @@ var Lemox = require('lemox');
 
 var Select = function() {
   var self = this;
-  Component.call(Select);
+
   self.inPorts = {
     "in": new Port(),
     node: new Port()
@@ -22,6 +22,8 @@ var Select = function() {
   self.inPorts.in.on('data', function (data) {
     parser.write(data);
   });
+  Component.call(this);
+
   self.inPorts.in.on('disconnect', function () {
     parser.end();
   });
