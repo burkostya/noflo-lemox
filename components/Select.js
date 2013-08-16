@@ -2,7 +2,7 @@ var util = require('util');
 
 var noflo     = require('noflo');
 var Port      = noflo.Port;
-var Component = noflo.Component;
+var Component = noflo.AsyncComponent;
 
 var Lemox = require('lemox');
 
@@ -17,11 +17,11 @@ var Select = function() {
     out:   new Port(),
     error: new Port()
   };
-
   var parser;
-  self.inPorts.in.on('data', function (data) {
-    parser.write(data);
-  });
+  self.doAsync = function(xml, done) {
+    parser.write(xml);
+  };
+
   Component.call(this);
 
   self.inPorts.in.on('disconnect', function () {
