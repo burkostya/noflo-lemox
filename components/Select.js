@@ -10,16 +10,16 @@ var Select = function() {
   var self = this;
 
   self.inPorts = {
-    "in": new Port(),
-    node: new Port()
+    "in": new Port('string'),
+    node: new Port('string')
   };
   self.outPorts = {
-    out:   new Port(),
-    error: new Port(),
-    drain: new Port()
+    out:   new Port('object'),
+    error: new Port('string'),
+    drain: new Port('boolean')
   };
   var parser;
-  self.doAsync = function(xml, done) {  
+  self.doAsync = function(xml, done) {
     var res = parser.write(xml);
     if (res) {
       process.nextTick(function () {
