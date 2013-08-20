@@ -15,7 +15,8 @@ var Select = function() {
   };
   self.outPorts = {
     out:   new Port(),
-    error: new Port()
+    error: new Port(),
+    drain: new Port()
   };
   var parser;
   self.doAsync = function(xml, done) {
@@ -34,6 +35,9 @@ var Select = function() {
     });
     parser.on('end', function () {
       self.outPorts.out.disconnect();
+    });
+    parser.on('drain', function () {
+      self.outPorts.drain.send(true);
     });
     parser.on('error', function (err) {
       self.outPorts.error.send(err);
