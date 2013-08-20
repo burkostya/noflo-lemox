@@ -16,7 +16,7 @@ var Select = function() {
   self.outPorts = {
     out:   new Port('object'),
     error: new Port('string'),
-    drain: new Port('boolean')
+    drain: new Port('bang')
   };
   var parser;
   self.doAsync = function(xml, done) {
