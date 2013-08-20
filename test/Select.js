@@ -68,4 +68,38 @@ describe('Select component', function() {
     ins.send(xml);
     ins.disconnect();
   });
+  it('should send data to DRAIN port when can consume more', function(done) {
+    this.timeout(1000);
+    var xml = '<root>';
+    for (var i = 0; i < 10000; i++) {
+      xml += '<el name="element">some text' + i + '</el>';
+    };
+    xml += '</root>';
+    chunks = xml.match(/.{1,16500}/g);
+    var error, wasLoad;
+    var elCount = 0;
+    out.on('data', function (element) {
+      expect(element.name).to.equal('el');
+      elCount += 1;
+    });
+    err.on('data', function (err) {
+      error = err;
+    });
+    out.on('disconnect', function () {
+      expect(error).to.not.exist;
+      expect(wasLoad).to.exist;
+      expect(elCount).to.equal(10000);
+      done();
+    });
+    node.send('el');
+    chunk = chunks.shift();
+    if (!chunk) { return ins.disconnect();}
+    ins.send(chunk);
+    drain.on('data', function (data) {
+      wasLoad = true;
+      chunk = chunks.shift();
+      if (!chunk) { return ins.disconnect();}
+      ins.send(chunk);
+    });
+  });
 });
