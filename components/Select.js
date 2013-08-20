@@ -19,8 +19,14 @@ var Select = function() {
     drain: new Port()
   };
   var parser;
-  self.doAsync = function(xml, done) {
-    parser.write(xml);
+  self.doAsync = function(xml, done) {  
+    var res = parser.write(xml);
+    if (res) {
+      process.nextTick(function () {
+        self.outPorts.drain.send(true);
+      });
+    }
+    done();
   };
 
   Component.call(this);
