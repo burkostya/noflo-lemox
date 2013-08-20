@@ -17,4 +17,5 @@ Parse xml into objects by selector.
 #### Out ports:
 
 - OUT: object with next fields: name, attributes, text, isSelfClosing
+- DRAIN: emits `true` when component can consume more xml
 - ERROR: error
