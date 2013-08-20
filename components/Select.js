@@ -46,7 +46,10 @@ var Select = function() {
       self.outPorts.drain.send(true);
     });
     parser.on('error', function (err) {
-      self.outPorts.error.send(err);
+      if (self.outPorts.error.isAttached()) {
+        self.outPorts.error.send(err);
+        self.outPorts.error.disconnect();
+      }
     });
   });
 };
