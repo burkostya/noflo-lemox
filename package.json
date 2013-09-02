@@ -37,7 +37,7 @@
   },
   "noflo": {
     "components": {
-      "Select": "./components/Select.coffee"
+      "Select": "./components/Select.js"
     }
   }
 }
