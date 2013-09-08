@@ -3,7 +3,7 @@
 
 NoFlo components for xml.
 
-## Usage
+## Components
 
 ### Select
 
